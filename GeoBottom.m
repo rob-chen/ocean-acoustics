@@ -109,7 +109,6 @@ classdef GeoBottom < LayeredFluidHalfspace
       BL = obj.getBottomLoss(frequencies, angles);
       [angles, frequencies] = meshgrid(angles, frequencies);
       colorVal = 0:14;
-      colorMap = 'jet';
       figure('color', 'w');
       pcolor(angles, frequencies, BL');
       shading interp;
@@ -119,9 +118,10 @@ classdef GeoBottom < LayeredFluidHalfspace
       xlabel('Grazing Angle (deg)');
       ylabel('Frequency (Hz)');
       title('Bottom Reflection Loss');
-      % EZColormap(colorVal, colorMap);
-      colormap(colorMap);
-      colorbar;
+      colormap(jet(length(colorVal)-1));
+      cb = colorbar;
+      cb.Ticks = colorVal;
+      clim([colorVal(1) colorVal(end)]);
       xlabel(findobj(get(gcf, 'children'), 'Tag', 'Colorbar'), '(dB)');
       axis square;
       grid on;
