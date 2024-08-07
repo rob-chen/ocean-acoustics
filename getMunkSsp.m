@@ -24,10 +24,12 @@ function ssp = getMunkSsp(depth, dsca)
     depth = depth(:);
   end
   
-  if nargin < 2 && depth(end) >= 3000
-    dsca = 1300;
-  else
-    error('You must specify the depth of minimum sound speed, dsca!');
+  if nargin < 2
+    if depth(end) >= 3000
+      dsca = 1300;
+    else
+      error('You must specify the depth of minimum sound speed, dsca!');
+    end
   end
   
   z = 2 * (depth - dsca) / dsca;
