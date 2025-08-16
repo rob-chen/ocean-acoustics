@@ -25,7 +25,7 @@ angles = -89:89;
 %% Compute acoustic ray paths
 
 % Create an instance of EZPZRay (the interface to EZRay)
-% Note: You can call EZRay directory, of course, but EZPZRay adds plotting functionality.
+% Note: You can call EZRay directly, of course, but EZPZRay adds plotting functionality.
 obj = EZPZRay(ssp, bathymetry, fixDepth, angles);
 
 % Perform the ray trace
