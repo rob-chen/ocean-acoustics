@@ -20,7 +20,9 @@ bathymetry = [(0:100:10000)', interp1([0 10000], [500, 3000], (0:100:10000))'];
 fixDepth = 100;
 
 % Departure angles (deg)
+% Note: Negative angles point upward
 angles = -89:89;
+
 
 %% Compute acoustic ray paths
 
@@ -31,7 +33,10 @@ obj = EZPZRay(ssp, bathymetry, fixDepth, angles);
 % Perform the ray trace
 obj.trace();
 
-% Plot noise notch angles
+% Plot rays for all departure angles
+obj.plot();
+
+% Plot only rays in the noise notch if there are any
 obj.plot(obj.notchAngles);
 
 % Plot contour of sound speed profiles
